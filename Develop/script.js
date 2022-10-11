@@ -1,23 +1,20 @@
 // Assignment code here
 
-// Declare variables
-var password = "";
-var passwordLenght = 8;
-var isLowercase = true;
-var isUppercase = true;
-var isNumeric = true;
-var isSpecCharac = true;
-var isCharTypeSlected = false;
-var charSet = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-// staring function to get password's lenght 
-function whatIsPasswordLenght() {
-  let input = prompt("PLease enter lenght of your password \n no less then 8 and no more then 128");
-  passwordLenght = input;
-}
-
-// confirm whether or not to include lowercase, uppercase, numeric, and/or special characters. Prepare charSet string for random Math function
-function whatIsPasswordCharSet() {
+// Password generator with prompt and confirm messages
+  function generatePassword() {
+// staring prompt to get user input for password's lenght 
+  let passwordLenght = prompt("PLease enter lenght of your password \n no less then 8 and no more then 128");
+  if(!passwordLenght) {
+    passwordLenght = 8;
+  } else if (passwordLenght > 128) {
+    passwordLenght = 128;
+  }
+  else if (passwordLenght < 8) {
+    passwordLenght = 8;
+  }
+// starting prompts to ask user whether or not to include lowercase, uppercase, numeric, and/or special characters. Prepare charSet string for random Math function
+  var charSet = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var needLowercase = confirm("Do you want to include lowercase");
   if (!needLowercase) {
     charSet = charSet.replace('abcdefghijklmnopqrstuvwxyz', '');
@@ -36,22 +33,14 @@ function whatIsPasswordCharSet() {
   }else if (!needSpecChar){
     charSet = charSet.replace('!@#$%^&*()', '');
   }
-  return charSet;
-}
-//console.log(whatIsPasswordCharSet());
-
-// generate password by using passwordLenght and charSet
-function passwordGenerator() {
+// generate password with Math.random function based on user input from passwordLendth and charset option prompts.
   var pass = '';
   for (let i = 1; i <= passwordLenght; i++) {
-      var char = Math.floor(Math.random()* charSet.length + 1);
+      var char = Math.floor(Math.random() * charSet.length);
       pass += charSet.charAt(char)
   }
   return pass;
 }
-//console.log(generateP());
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -62,8 +51,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click",  );
+// Add event listener to generate button. writePassword function is added without "()"
+generateBtn.addEventListener("click", writePassword);
