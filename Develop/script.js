@@ -4,7 +4,7 @@
 // Password generator with prompt and confirm messages
   function generatePassword() {
 // staring prompt to get user input for password's lenght 
-  let passwordLenght = prompt("PLease enter lenght of your password \n no less then 8 and no more then 128");
+  let passwordLenght = prompt("Please enter lenght of your password \nno less then 8 and no more then 128");
   if(!passwordLenght) {
     passwordLenght = 8;
   } else if (passwordLenght > 128) {
@@ -13,8 +13,9 @@
   else if (passwordLenght < 8) {
     passwordLenght = 8;
   }
-// starting prompts to ask user whether or not to include lowercase, uppercase, numeric, and/or special characters. Prepare charSet string for random Math function
-  var charSet = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// starting prompts to ask user whether or not to include lowercase, uppercase, numeric, and/or special characters. 
+//Prepare charSet string for random Math function
+  var charSet = "0123456789abcdefghijklmnopqrstuvwxyz!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var needLowercase = confirm("Do you want to include lowercase");
   if (!needLowercase) {
     charSet = charSet.replace('abcdefghijklmnopqrstuvwxyz', '');
@@ -31,9 +32,9 @@
   if (!needSpecChar && charSet.length <= 10) {
     alert("You can't generate password without lowercase, uppercase, numeric, and special characters \n your password will be created with special characters only");
   }else if (!needSpecChar){
-    charSet = charSet.replace('!@#$%^&*()', '');
+    charSet = charSet.replace('!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~', '');
   }
-// generate password with Math.random function based on user input from passwordLendth and charset option prompts.
+// generate password with Math.random function based on user input from passwordLendth and charSet option prompts.
   var pass = '';
   for (let i = 1; i <= passwordLenght; i++) {
       var char = Math.floor(Math.random() * charSet.length);
