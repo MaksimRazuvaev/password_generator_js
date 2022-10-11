@@ -29,7 +29,7 @@
     charSet = charSet.replace('0123456789', '');
   }
   var needSpecChar = confirm("Do you want to include special characters");
-  if (!needSpecChar && charSet.length <= 10) {
+  if (!needSpecChar && charSet.length <= 32) {
     alert("You can't generate password without lowercase, uppercase, numeric, and special characters \n your password will be created with special characters only");
   }else if (!needSpecChar){
     charSet = charSet.replace('!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~', '');
