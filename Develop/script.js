@@ -4,33 +4,39 @@
 // Password generator with prompt and confirm messages
   function generatePassword() {
 // staring prompt to get user input for password's lenght 
-  let passwordLenght = prompt("Please enter lenght of your password \nno less then 8 and no more then 128");
+  let passwordLenght = prompt("Please enter lenght of your password \nno less then 8 and no more then 128.");
   if(!passwordLenght) {
+    alert("You can't leave password lenght empty. \nPassword lenght will be set to 8.");
     passwordLenght = 8;
   } else if (passwordLenght > 128) {
+    alert("Password lenght can't be more then 128. \nPassword lenght will be set to 128.");
     passwordLenght = 128;
   }
   else if (passwordLenght < 8) {
+    alert("Password lenght can't be less then 8. \nPassword lenght will be set to 8.");
     passwordLenght = 8;
   }
+
+
+
 // starting prompts to ask user whether or not to include lowercase, uppercase, numeric, and/or special characters. 
 //Prepare charSet string for random Math function
   var charSet = "0123456789abcdefghijklmnopqrstuvwxyz!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var needLowercase = confirm("Do you want to include lowercase");
+  var needLowercase = confirm("Do you want to include lowercase?");
   if (!needLowercase) {
     charSet = charSet.replace('abcdefghijklmnopqrstuvwxyz', '');
   }
-  var needUpperCase = confirm("Do you want to include upercase"); 
+  var needUpperCase = confirm("Do you want to include upercase?"); 
   if (!needUpperCase) {
     charSet = charSet.replace('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '');
   }
-  var needNumeric = confirm("Do you want to include numeric");
+  var needNumeric = confirm("Do you want to include numeric?");
   if (!needNumeric) {
     charSet = charSet.replace('0123456789', '');
   }
-  var needSpecChar = confirm("Do you want to include special characters");
+  var needSpecChar = confirm("Do you want to include special characters?");
   if (!needSpecChar && charSet.length <= 32) {
-    alert("You can't generate password without lowercase, uppercase, numeric, and special characters \n your password will be created with special characters only");
+    alert("You can't generate password without lowercase, uppercase, numeric, and special characters. \nYour password will be generated with special characters only.");
   }else if (!needSpecChar){
     charSet = charSet.replace('!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~', '');
   }
